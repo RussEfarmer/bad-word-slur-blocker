@@ -12,7 +12,6 @@ function findBadWords(table, text)
 	end
 end
 
-
 if SERVER then
 	hook.Remove("PlayerSay", "nobadword")
 	hook.Add( "PlayerSay", "nobadword", function(ply, text)
