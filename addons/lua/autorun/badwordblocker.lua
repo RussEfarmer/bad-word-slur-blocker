@@ -15,6 +15,12 @@ end
 if SERVER then
 	hook.Remove("PlayerSay", "nobadword")
 	hook.Add( "PlayerSay", "nobadword", function(ply, text)
-		if findBadWords(badwords, text) then return "" end --this blocks the player message, we can make other things happen too
+		if findBadWords(badwords, text) then 
+			if not ply:GetPData("tmuted") or ply:GetPData("tmuted") == 0 or ply:GetPData("tmuted") == "0" then
+				RunConsoleCommand("ulx", "tmute", ply:Nick(), "5")
+				RunConsoleCommand("ulx", "asay", ply:Nick().." ("..ply:SteamID().. ") was muted for saying: \""..text.."\"")
+				return ""
+			end
+		end
 	end)
 end
