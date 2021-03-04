@@ -8,7 +8,7 @@ badwords = {
 
 function findBadWords(table, text)
 	for k,v in pairs(table) do
-		if string.find(text, v) then return true end
+		if string.find(string.lower(text), v) then return true end
 	end
 end
 
