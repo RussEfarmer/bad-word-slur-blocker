@@ -3,12 +3,12 @@ badwords = {
 	"badword2",
 	"badword3",
 	"badword4",
-	"badword5" -- don't put a comma on the last one
+	"badword5" -- don't put a comma on the last one, entries must be lowercase
 }
 
 function findBadWords(table, text)
 	for k,v in pairs(table) do
-		if string.find(text, v) then return true end
+		if string.find(string.lower(text), v) then return true end
 	end
 end
 
